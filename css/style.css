@@ -1,0 +1,51 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #060508; color: #e6dde8; font-family: "Pretendard", system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; overflow: hidden; user-select: none; }
+#app { position: fixed; inset: 0; }
+#stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+#game, #hud { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); image-rendering: pixelated; image-rendering: crisp-edges; }
+#hud { image-rendering: auto; pointer-events: none; }
+#ui { position: absolute; inset: 0; pointer-events: none; }
+#ui > .screen { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; pointer-events: auto; }
+.dim { background: rgba(6, 5, 8, 0.82); }
+.solid { background: radial-gradient(ellipse at 50% 35%, #1d1520 0%, #09070b 70%); }
+
+.title-logo { font-size: clamp(40px, 8vw, 92px); font-weight: 900; letter-spacing: 0.06em; color: #efe5ea; line-height: 1; text-shadow: 0 4px 0 #3a0f12, 0 0 40px rgba(160, 30, 30, 0.35); }
+.title-logo span { color: #c7453e; }
+.title-sub { margin-top: 14px; letter-spacing: 0.5em; font-size: 12px; color: #7f7488; }
+.blink { margin-top: 60px; font-size: 15px; color: #cfc5d4; animation: blink 1.2s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0.25; } }
+.ver { position: absolute; right: 14px; bottom: 10px; font-size: 11px; color: #5c5363; letter-spacing: 0.1em; }
+
+.menu { display: flex; flex-direction: column; gap: 6px; min-width: 300px; }
+.menu h2 { margin: 0 0 18px; font-size: 13px; letter-spacing: 0.4em; color: #8b8093; font-weight: 700; text-align: center; }
+.item { padding: 12px 20px; font-size: 18px; font-weight: 700; color: #a99fb0; border-left: 3px solid transparent; cursor: pointer; display: flex; justify-content: space-between; gap: 30px; }
+.item small { font-size: 13px; color: #7f7488; font-weight: 600; }
+.item.on { color: #fff3f0; background: linear-gradient(90deg, rgba(160, 36, 36, 0.38), rgba(160, 36, 36, 0)); border-left-color: #d24a40; }
+.item.on small { color: #e7b2a8; }
+.hint { margin-top: 26px; font-size: 12px; color: #6e6477; text-align: center; line-height: 1.8; }
+.hint b { color: #b8adc0; }
+
+.select { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; width: min(900px, 92vw); }
+.card { background: rgba(20, 16, 24, 0.85); border: 1px solid #2c2433; border-radius: 6px; padding: 18px 20px; min-height: 280px; display: flex; flex-direction: column; }
+.card .who { font-size: 12px; letter-spacing: 0.3em; color: #8b8093; font-weight: 700; }
+.card .who.ok { color: #e8c35e; }
+.card canvas { image-rendering: pixelated; width: 100%; height: auto; margin: 10px 0; background: #120e15; border-radius: 4px; }
+.card .nm { font-size: 26px; font-weight: 900; }
+.card .en { font-size: 11px; letter-spacing: 0.3em; color: #8b8093; margin-left: 8px; }
+.card .ds { font-size: 13px; color: #a99fb0; margin-top: 6px; line-height: 1.6; }
+.card .arrows { display: flex; justify-content: space-between; color: #6e6477; font-size: 13px; margin-top: auto; padding-top: 10px; }
+
+.howto { width: min(980px, 94vw); max-height: 88vh; overflow: auto; background: rgba(16, 13, 19, 0.94); border: 1px solid #2c2433; border-radius: 6px; padding: 22px 26px; }
+.howto h3 { margin: 0 0 10px; font-size: 15px; color: #efe5ea; }
+.howto table { border-collapse: collapse; width: 100%; font-size: 13px; margin-bottom: 16px; }
+.howto td { padding: 5px 8px; border-bottom: 1px solid #241e2a; color: #c4bac9; }
+.howto td:first-child { color: #efe5ea; font-weight: 700; width: 34%; }
+.howto td.cmd { font-family: ui-monospace, Consolas, monospace; color: #e8c35e; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.keys { font-size: 13px; color: #c4bac9; line-height: 1.9; }
+.keys b { color: #efe5ea; display: inline-block; min-width: 140px; }
+
+.loading { width: 280px; height: 4px; background: #241e2a; border-radius: 2px; overflow: hidden; margin-top: 18px; }
+.loading div { height: 100%; width: 0; background: #c7453e; }
+.result .big { font-size: 56px; font-weight: 900; color: #efe5ea; text-shadow: 0 4px 0 #3a0f12; }
+@media (max-width: 700px) { .select, .cols { grid-template-columns: 1fr; } }
